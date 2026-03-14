@@ -9,7 +9,7 @@ import { ChevronLeft } from "lucide-react";
 import StudentTable from "@/components/dashboard/StudentTable";
 import AssignmentPanel from "@/components/dashboard/AssignmentPanel";
 import AddStudentDialog from "@/components/dashboard/AddStudentDialog";
-import { GameMode, GameSession } from "@prisma/client";
+import { GameMode, AppGameSession as GameSession } from "@/types/app";
 
 function calcStudentStats(sessions: GameSession[]) {
   if (!sessions.length) return { avgScore: 0, totalMinutes: 0, lastActive: null, completionRate: 0 };

@@ -1,7 +1,7 @@
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { redirect } from "next/navigation";
-import { GameSession } from "@prisma/client";
+import { AppGameSession as GameSession } from "@/types/app";
 import SchoolCharts from "@/components/school/SchoolCharts";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";

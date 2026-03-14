@@ -3,7 +3,7 @@ import { prisma } from "@/lib/prisma";
 import { redirect } from "next/navigation";
 import ClassCard from "@/components/dashboard/ClassCard";
 import CreateClassDialog from "@/components/dashboard/CreateClassDialog";
-import { GameSession } from "@prisma/client";
+import { AppGameSession as GameSession } from "@/types/app";
 
 function calcStats(sessions: GameSession[]) {
   if (!sessions.length) return { avgScore: 0, totalMinutes: 0, completionRate: 0 };

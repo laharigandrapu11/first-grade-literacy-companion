@@ -1,6 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
-import { GameMode } from "@prisma/client";
+import { GameMode } from "@/types/app";
 
 export async function POST(req: Request) {
   const { studentId, mode, score, maxScore, duration, completed, assignmentId } =

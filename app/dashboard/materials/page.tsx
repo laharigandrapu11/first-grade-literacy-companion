@@ -3,8 +3,6 @@ import { prisma } from "@/lib/prisma";
 import { redirect } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { MaterialType } from "@prisma/client";
-
 const DIFFICULTY_STARS = (n: number) => "⭐".repeat(n) + "☆".repeat(5 - n);
 
 export default async function MaterialsPage() {
@@ -16,8 +14,8 @@ export default async function MaterialsPage() {
     include: { _count: { select: { assignments: true } } },
   });
 
-  const wordLists = materials.filter((m) => m.type === MaterialType.WORD_LIST);
-  const books = materials.filter((m) => m.type === MaterialType.BOOK);
+  const wordLists = materials.filter((m) => m.type === "WORD_LIST");
+  const books = materials.filter((m) => m.type === "BOOK");
 
   return (
     <div className="space-y-8">
