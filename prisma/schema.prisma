@@ -1,0 +1,121 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  TEACHER
+  SCHOOL_ADMIN
+}
+
+enum GameMode {
+  LETTERS
+  WORDS
+  BOOKS
+}
+
+enum MaterialType {
+  WORD_LIST
+  BOOK
+}
+
+model School {
+  id        String   @id @default(cuid())
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  users   User[]
+  classes Class[]
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String
+  role      Role
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  school   School @relation(fields: [schoolId], references: [id])
+  schoolId String
+
+  classes Class[]
+}
+
+model Class {
+  id        String   @id @default(cuid())
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  teacher   User   @relation(fields: [teacherId], references: [id])
+  teacherId String
+
+  school   School @relation(fields: [schoolId], references: [id])
+  schoolId String
+
+  students    Student[]
+  assignments Assignment[]
+}
+
+model Student {
+  id        String   @id @default(cuid())
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  class   Class  @relation(fields: [classId], references: [id])
+  classId String
+
+  gameSessions GameSession[]
+}
+
+model GameSession {
+  id        String   @id @default(cuid())
+  mode      GameMode
+  score     Int      @default(0)
+  maxScore  Int      @default(0)
+  duration  Int      @default(0)
+  completed Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  student   Student @relation(fields: [studentId], references: [id])
+  studentId String
+
+  assignment   Assignment? @relation(fields: [assignmentId], references: [id])
+  assignmentId String?
+}
+
+model Assignment {
+  id          String    @id @default(cuid())
+  mode        GameMode
+  targetScore Int?
+  dueDate     DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  class   Class  @relation(fields: [classId], references: [id])
+  classId String
+
+  material   Material? @relation(fields: [materialId], references: [id])
+  materialId String?
+
+  gameSessions GameSession[]
+}
+
+model Material {
+  id         String       @id @default(cuid())
+  title      String
+  type       MaterialType
+  content    Json
+  difficulty Int          @default(1)
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @updatedAt
+
+  assignments Assignment[]
+}
