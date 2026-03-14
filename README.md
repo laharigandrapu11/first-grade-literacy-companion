@@ -1,5 +1,7 @@
 # First Grade Literacy Companion
 
+**Live Demo:** [https://first-grade-literacy-companion.vercel.app](https://first-grade-literacy-companion.vercel.app)
+
 This application was built in 3 hours using Cursor as a demonstration for a Vibe and AI Programming class, serving as a practical example of AI-assisted full-stack development.
 
 ## Overview
