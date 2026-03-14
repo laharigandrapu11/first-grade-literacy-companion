@@ -39,7 +39,7 @@ All game modes include Web Audio API sound effects: a chime on correct answers, 
 | Layer | Technology |
 |-------|------------|
 | Framework | Next.js 16 (App Router), TypeScript |
-| Database | PostgreSQL via Prisma ORM (v7) |
+| Database | PostgreSQL via Prisma ORM (v7), hosted on [Neon](https://neon.tech) |
 | Authentication | NextAuth.js v5 (credentials, JWT sessions) |
 | UI Components | Tailwind CSS v4, shadcn/ui (@base-ui/react) |
 | Animations | Framer Motion |
@@ -70,7 +70,7 @@ NEXTAUTH_SECRET="your-secret-key"
 NEXTAUTH_URL="http://localhost:3000"
 ```
 
-A hosted option such as [Neon](https://neon.tech) (free tier) works out of the box with no local Postgres installation required.
+A hosted option such as [Neon](https://neon.tech) (free tier, no credit card required) works out of the box with no local Postgres installation required. This project was developed and tested using Neon as the database provider.
 
 ### Database Setup
 
