@@ -17,7 +17,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Trash2, Plus } from "lucide-react";
 import { toast } from "sonner";
-import { Material, MaterialType } from "@prisma/client";
+import { AppMaterial as Material } from "@/types/app";
 import { format } from "date-fns";
 
 type AssignmentWithLabel = {
@@ -61,8 +61,8 @@ export default function AssignmentPanel({
   const [deletingId, setDeletingId] = useState<string | null>(null);
 
   const filteredMaterials = materials.filter((m) => {
-    if (mode === "WORDS") return m.type === MaterialType.WORD_LIST;
-    if (mode === "BOOKS") return m.type === MaterialType.BOOK;
+    if (mode === "WORDS") return m.type === "WORD_LIST";
+    if (mode === "BOOKS") return m.type === "BOOK";
     return false;
   });
 

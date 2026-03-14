@@ -15,7 +15,7 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Trash2 } from "lucide-react";
 import { toast } from "sonner";
-import { GameMode, GameSession } from "@prisma/client";
+import { GameMode, AppGameSession as GameSession } from "@/types/app";
 import { formatDistanceToNow } from "date-fns";
 
 const MODE_BADGE: Record<GameMode, { label: string; class: string }> = {

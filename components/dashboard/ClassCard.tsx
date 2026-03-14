@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import { Assignment, GameMode } from "@prisma/client";
+import { AppAssignment as Assignment, GameMode } from "@/types/app";
 
 const MODE_LABELS: Record<GameMode, string> = {
   LETTERS: "Letters",

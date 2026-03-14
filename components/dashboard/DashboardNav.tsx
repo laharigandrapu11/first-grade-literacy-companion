@@ -14,7 +14,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Role } from "@prisma/client";
+import { Role } from "@/types/app";
 
 interface NavUser {
   id: string;
